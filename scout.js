@@ -1,12 +1,12 @@
 const https = require('https');
 const fs = require('fs');
-const source = fs.readFileSync('./poi-list.json');
+const source = fs.readFileSync('./url-list.json');
 const urlList = JSON.parse(source);
 
-Object.values(urlList).forEach(poi => {
-    https.get(poi.url, res => {
+Object.values(urlList).forEach(list => {
+    https.get(list.url, res => {
         if (res.statusCode != 200) {
-            console.log(`${res.statusCode}: ${poi.url}`);
+            console.log(`${res.statusCode}: ${list.url}`);
         }
     });
     console.log(".");
